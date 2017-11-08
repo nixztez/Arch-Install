@@ -149,4 +149,4 @@ sudo reboot
 # Install nvidia if needed
 sudo pacman -S nvidia-dkms libglvnd nvidia-utils opencl-nvidia lib32-nvidia-utils lib32-opencl-nvidia nvidia-settings linux-headers
 
-### INSTALL DESKTOP ENVIRONMENT AND STUFF
+# INSTALL DESKTOP ENVIRONMENT AND STUFF
