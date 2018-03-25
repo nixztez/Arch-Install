@@ -121,10 +121,9 @@ sudo pacman -S bash-completion intel-ucode network-manager
 
 ## Install boot loader
 bootctl install
-nano /boot/loader/entries/arch.conf
 
 ## Edit boot loader conf
-sudo nano /etc/loader/entires/arch.conf
+sudo nano /boot/loader/entires/arch.conf
 ### Add this to the file
 title Arch Linux
 linux vmlinuz-linux
@@ -138,7 +137,7 @@ echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/xxx3) rw" >> /boot
 ip link
 sudo systemctl enable dhcpcd@modul
 
-sudo pacman -S NetworkManager
+sudo pacman -S networkmanager
 sudo systemctl enable NetworkManager
 
 ## Reboot
