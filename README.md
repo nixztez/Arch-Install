@@ -38,19 +38,19 @@ Write and then exit
 ### Boot
 mkfs.fat -F32 /dev/xxx1
 ### Swap
-mkswap /dev/xxx2
+mkswap /dev/xxx2  
 swapon /dev/xxx2
 ### Root
 mkfs.ext4 /dev/xxx3
 
 ## Mount
-mount /dev/xxx3 /mnt
-mkdir /mnt/boot
+mount /dev/xxx3 /mnt  
+mkdir /mnt/boot  
 mount /dev/xxx1 /mnt/boot
 
 ## Setup mirrorlist
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.bak
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak  
+sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.bak  
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
 
 ## Setup base system
@@ -69,11 +69,11 @@ nano /etc/locale.gen
 locale-gen
 
 ## Some stuff
-echo LANG=en_US.UTF-8 > /etc/locale.conf
-export LANG=en_US.UTF-8
-echo KEYMAP=sv-latin1 > /etc/vconsole.conf
-ln -s /usr/share/zoneinfo/Europe/Stockholm > /etc/localtime
-hwclock --systohc --utc
+echo LANG=en_US.UTF-8 > /etc/locale.conf  
+export LANG=en_US.UTF-8  
+echo KEYMAP=sv-latin1 > /etc/vconsole.conf  
+ln -s /usr/share/zoneinfo/Europe/Stockholm > /etc/localtime  
+hwclock --systohc --utc  
 echo iron > /etc/hostname
 
 ## Disk trim weekly?
@@ -83,19 +83,19 @@ sudo systemctl enable fstrim.timer
 nano /etc/pacman.conf
 
 ### Add the following to the bottom
-[archlinuxfr]
-SigLevel = Never
+[archlinuxfr]  
+SigLevel = Never  
 Server = http://repo.archlinux.fr/$arch
 
 ### Update
-sudo pacman -Sy
+sudo pacman -Sy  
 sudo pacman -S yaourt
 
 ## Enable multilib
 nano /etc/pacman.conf
 
 ### Uncomment
-[multilib]
+[multilib]  
 Include = /etc/pacman.d/mirrorlist
 
 ### Update again
@@ -106,7 +106,7 @@ sudo pacman -Sy
 passwd
 
 ### User account
-useradd -m -g users -G wheel,storage,power -s /bin/bash mattias
+useradd -m -g users -G wheel,storage,power -s /bin/bash mattias  
 passwd mattias
 
 ## Setup sudoers
@@ -125,24 +125,24 @@ bootctl install
 ## Edit boot loader conf
 sudo nano /boot/loader/entires/arch.conf
 ### Add this to the file
-title Arch Linux
-linux vmlinuz-linux
-initrd /intel-ucode.img
-initrd /initramfs-linux.img
+title Arch Linux  
+linux vmlinuz-linux  
+initrd /intel-ucode.img  
+initrd /initramfs-linux.img  
 
 ### From outside file
 echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/xxx3) rw" >> /boot/loader/entries/arch.conf
 
 ## Setup internet
-ip link
-sudo systemctl enable dhcpcd@modul
+ip link  
+sudo systemctl enable dhcpcd@modul  
 
-sudo pacman -S networkmanager
+sudo pacman -S networkmanager  
 sudo systemctl enable NetworkManager
 
 ## Reboot
-exit
-umount -R /mnt
+exit  
+umount -R /mnt  
 sudo reboot
 
 ## Install nvidia if needed
