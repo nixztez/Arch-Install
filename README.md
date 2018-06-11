@@ -89,7 +89,8 @@ Server = http://repo.archlinux.fr/$arch
 
 ### Update
 sudo pacman -Sy  
-sudo pacman -S yaourt
+Install the yay AUR helper 
+https://github.com/Jguer/yay
 
 ## Enable multilib
 nano /etc/pacman.conf
