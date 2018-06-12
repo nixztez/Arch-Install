@@ -80,16 +80,8 @@ echo iron > /etc/hostname
 sudo systemctl enable fstrim.timer
 
 ## Setup aur
-nano /etc/pacman.conf
-
-### Add the following to the bottom
-[archlinuxfr]  
-SigLevel = Never  
-Server = http://repo.archlinux.fr/$arch
-
-### Update
-sudo pacman -Sy  
-Install the "yay" AUR helper https://github.com/Jguer/yay
+Install the "yay" AUR helper https://github.com/Jguer/yay  
+sudo pacman -Sy
 
 ## Enable multilib
 nano /etc/pacman.conf
