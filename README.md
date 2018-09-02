@@ -65,7 +65,7 @@ nano /mnt/etc/fstab
 arch-chroot /mnt
 
 ## Generate locale
-nano /etc/locale.gen
+nano /etc/locale.gen  
 locale-gen
 
 ## Some stuff
