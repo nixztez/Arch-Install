@@ -64,8 +64,11 @@ nano /mnt/etc/fstab
 ## Chroot into system
 arch-chroot /mnt
 
+## Install vim
+pacman -S vim
+
 ## Generate locale
-nano /etc/locale.gen  
+vim /etc/locale.gen  
 locale-gen
 
 ## Some stuff
@@ -84,7 +87,7 @@ Install the "yay" AUR helper https://github.com/Jguer/yay
 sudo pacman -Sy
 
 ## Enable multilib
-nano /etc/pacman.conf
+vim /etc/pacman.conf
 
 ### Uncomment
 [multilib]  
@@ -98,24 +101,24 @@ sudo pacman -Sy
 passwd
 
 ### User account
-useradd -m -g users -G wheel,storage,power -s /bin/bash mattias  
-passwd mattias
+useradd -m -g users -G wheel,storage,power -s /bin/bash myusername  
+passwd myusername
 
 ## Setup sudoers
-EDITOR=nano visudo
+EDITOR=vim visudo
 ### Uncomment
 %wheel ALL=(ALL) NOPASSWD: ALL
 ### Add this to the bottom of the file
 Defaults rootpw
 
 ## Install
-sudo pacman -S bash-completion intel-ucode network-manager
+sudo pacman -S bash-completion intel-ucode networkmanager
 
 ## Install boot loader
 bootctl install
 
 ## Edit boot loader conf
-sudo nano /boot/loader/entires/arch.conf
+sudo vim /boot/loader/entires/arch.conf
 ### Add this to the file
 title Arch Linux  
 linux vmlinuz-linux  
@@ -123,12 +126,9 @@ initrd /intel-ucode.img
 initrd /initramfs-linux.img  
 
 ### From outside file
-echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/xxx3) rw" >> /boot/loader/entries/arch.conf
+echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/xxxx) rw" >> /boot/loader/entries/arch.conf
 
 ## Setup internet
-ip link  
-sudo systemctl enable dhcpcd@modul  
-
 sudo pacman -S networkmanager  
 sudo systemctl enable NetworkManager
 
@@ -137,7 +137,4 @@ exit
 umount -R /mnt  
 sudo reboot
 
-## Install nvidia if needed
-sudo pacman -S nvidia-dkms libglvnd nvidia-utils opencl-nvidia lib32-nvidia-utils lib32-opencl-nvidia nvidia-settings linux-headers
-
-## INSTALL DESKTOP ENVIRONMENT AND STUFF
+## INSTALL DISPLAY SERVER, DESKTOP ENVIRONMENT AND STUFF
