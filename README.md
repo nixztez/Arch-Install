@@ -112,7 +112,7 @@ arch-chroot /mnt
 ```
 
 ## Installing vim
-You may want to use nano if you haven't used vim before, nonetheless it is great to learn.
+You may want to use nano if you haven't used vim before, nonetheless it is great to learn. If planning on using **gvim**, install that package instead as it conflicts with **vim**. This is not a problem since **gvim** also provides the terminal variant.
 ```
 pacman -S vim
 ```
@@ -145,7 +145,7 @@ Locales are used for rendering text, correctly displaying regional monetary valu
 vim /etc/locale.gen
 ```
 
-Generate the locale(s)
+Generate the locale(s).
 ```
 locale-gen
 ```
@@ -181,11 +181,14 @@ sudo systemctl enable fstrim.timer
 
 ## Enabling multilib
 Multilib contains 32-bit software and libraries that can be used to run and build 32-bit applications on 64-bit installs. To enable it,
-edit **/etc/pacman.conf** and uncomment the following lines.
+edit **/etc/pacman.conf** and uncomment the following lines. 
 ```
+Color
+
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 ```
+After **/etc/pacman.conf** has been saved, update the package manager with **pacman -Sy**.
 
 ## Setting up accounts and passwords
 To change the password for root, execute **passwd**.
@@ -207,7 +210,7 @@ Never edit the sudoers file by opening it with a regular text editor like **vim 
 
 The next bit will be dependent on the processor used in the system. In the following example a package called **intel-ucode** is installed, as well as two other useful packages. Replace **intel-ucode** with **amd-ucode** if the processor used is an amd.
 ```
-pacman -S bash-completion linux-headers intel-ucode
+pacman -S bash-completion git linux-headers intel-ucode
 ```
 
 ## Installing the boot loader
@@ -229,19 +232,27 @@ Write and exit the file and execute this command to add the partition to boot. T
 echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/xxx3) rw" >> /boot/loader/entries/arch.conf
 ```
 
-## Setup aur
-Install the "yay" AUR helper https://github.com/Jguer/yay
+## Setup aur with yay
 ```
-sudo pacman -Sy
+su myusername
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+cd ..
+rm -rf yay
+exit
+```
+```
+pacman -Sy
 ```
 
 ## Setting up networkmanager
-This is the perfect time to install the wireless driver. On my laptop the **broadcom-wl-dkms** package works, please use Google to find the appropriate driver. The dkms version of the driver will always rebuilt for new kernels. If a non-dkms driver was used it would render the driver useless after a kernal upgrade. 
+This is the perfect time to install the wireless driver. On my laptop the **broadcom-wl-dkms** package works, but please use Google to find the appropriate driver. The dkms version of the driver will always rebuilt for new kernels. If a non-dkms driver was used it would render the driver useless after a kernal upgrade.
 
 Install NetworkManager and enable it on boot.
 ```
-sudo pacman -S networkmanager
-sudo systemctl enable NetworkManager
+pacman -S networkmanager
+systemctl enable NetworkManager
 ```
 
 ## Installing display manager and desktop environment 
@@ -249,9 +260,15 @@ In this example the following packages are installed.\
 Display manager: sddm\
 Desktop environment: kde plasma\
 Browsers: firefox, chromium\
-Terminal: termite
+Terminal: termite\
+File managers: dolphin
 ```
-pacman -S sddm plasma-meta firefox chromium termite
+pacman -S sddm plasma-meta dolphin dolphin-plugins firefox chromium termite
+```
+
+Enable sddm on boot
+```
+systemctl enable sddm
 ```
 
 ## Reboot
