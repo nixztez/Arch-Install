@@ -1,19 +1,20 @@
 # Arch-Install
 Prerequisites: a drive that can be wiped. If dual booting, enough with remaining space to create partitions.
 
-## Load appropriate keyboard layout
+## Load appropriate keyboard la
+t
 An example of how to load the swedish layout:
 ```
 loadkeys sv-latin1
 ```
 
-## Check if we are booted into uefi
+## Check if booted into uefi mode
 The following command should list a bunch of variables if booted into uefi, this is important as this is a uefi install. If the variables is not listed, use Google.
 ```
 efivar -l
 ```
 
-## Internet connection
+## Connecting to the internet
 All connections using ethernet should already be working, and on laptops which doesn't have an ethernet port, it would be really convenient to use an ethernet adapter or use a driverless usb wireless adapter. Please refer to google if attempting to use wireless drivers during install. To connect to a wireless network, use the **wifi-menu** command.
 
 Verify internet connection by pinging a website, in this case Google.
@@ -40,8 +41,6 @@ Next up, execute **cgdisk /dev/xxx/** on the chosen drive and create the followi
 
 ### Boot
 The first needed partition is the boot partition. Arch wiki recommends a size of 550MiB for efi systems, but a bigger may be needed if playing around with multiple kernels. The hex code to create it with is EF00. This partition will also be detected by macs boot menu.
-
-The first partition we are going to create is the boot partition. If you want some extra space in the boot partition just in case you need it, make it 1024MiB. If you have a very limited amount of space, make it 550MiB as recommended by the arch wiki. The hex code you want to use is EF00. This partition will also be automatically detected by macs in the boot menu.
 
 ### Swap
 Now there is two options, and the decision is between using a swap partition or a swap file. According to the wiki, the swap file do not have any performance overhead compared to a partition but are much easier to resize as needed. Hence, the swap file is recommended if there is a limited amount of space or if there is a high chance that it will be changed. Please refer to the wiki article below for recommendations regarding the size of the partition. The hex code of swap is 8200.
