@@ -1,8 +1,7 @@
 # Arch-Install
 Prerequisites: a drive that can be wiped. If dual booting, enough with remaining space to create partitions.
 
-## Load appropriate keyboard la
-t
+## Load appropriate keyboard layout
 An example of how to load the swedish layout:
 ```
 loadkeys sv-latin1
