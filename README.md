@@ -142,7 +142,7 @@ Open **/mnt/etc/fstab** again and check for errors such as missing entries. At t
 
 boot\
 swap partition/swap file\
-root partition\
+root partition
 
 ## Configuring locale
 Locales are used for rendering text, correctly displaying regional monetary values, time and date formats, alphabetic idiosyncrasies, and other locale-specific standards. Uncomment the locale of choice in the following file.
@@ -254,7 +254,7 @@ In this example the following packages are installed.\
 Display manager: sddm\
 Desktop environment: kde plasma\
 Browsers: firefox, chromium\
-Terminal: termite\
+Terminal: termite
 ```
 pacman -S sddm plasma-meta firefox chromium termite
 ```
