@@ -32,7 +32,7 @@ List all drives and partitions with **lsblk**. Take note of the drive the instal
 lsblk
 ```
 
-If the entire drive is going to be used solely for arch, clean it with the following commands where **/dev/xxx** is the drive.
+If the entire drive is going to be used solely for arch, wipe it with the following commands where **/dev/xxx** is the drive.
 ```
 gdisk /dev/xxx
 x
