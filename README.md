@@ -127,7 +127,7 @@ swapon /swapfile
 ```
 To modify the swapfile after creation, please refer to the following [arch wiki](https://wiki.archlinux.org/index.php/Swap#Swap_file).
 
-Since there currently is no entry for the swap file in fstab, edit it with **vim /etc/fstab**. The entry should look as following.
+Since there currently is no entry for the swap file in fstab, edit it with **vim /etc/fstab**. Add an entry that looks as following.
 ```
 /swapfile none swap defaults 0 0
 ```
