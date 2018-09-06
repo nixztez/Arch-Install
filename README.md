@@ -1,5 +1,10 @@
 # Arch-Install
-Prerequisites: a drive that can be wiped. If dual booting, enough with remaining space to create partitions.
+
+**Prerequisites:** A drive that can be wiped, or if dual booting, enough with remaining space to create partitions for Arch.
+
+**Always** check if the correct partition and drive is used when executing a command as the examples throughout this tutorial might not be the correct for you.
+
+Throughout this tutorial vim is used, and that is interchangeable with nano if you don't know how to use vim. If you accidentally open vim, close it with **:q!**.
 
 ## Load appropriate keyboard layout
 An example of how to load the swedish layout:
