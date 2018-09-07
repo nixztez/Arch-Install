@@ -201,7 +201,7 @@ passwd myusername
 The **-m** option is short for **--create-home** and is very self explanatory. The **-G** is short for **--groups** and is a list of supplementary groups of the new user. **-G** is not the same as **-g** which only specifies the primary group of the user that will be given to files created by the user. The default value of **-g** is the same as the username.
 
 ## Setting up sudoers
-Never edit the sudoers file by opening it with a regular text editor like **vim /etc/sudoers**. The problem with this is that it never checks the syntax of the file before writing it, and that can result in being locked out of sudo. Instead, always use the visudo program as that will not allow a faulty configuration to be saved. Open the visudo file with **EDITOR=vim visudo** and uncomment the following line.
+Never edit the sudoers file by opening it with a regular text editor like **vim /etc/sudoers**. The problem with this is that it never checks the syntax of the file before writing it, and that can result in being locked out of sudo. Instead, always use the visudo program as that will not allow a faulty configuration to be saved. Open the visudo file with **EDITOR=vim visudo** and uncomment the following line. Write and exit.
 ```
 %wheel ALL=(ALL) ALL
 ```
@@ -232,7 +232,8 @@ Write and exit the file and execute this command to add the partition to boot. T
 echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/xxx3) rw" >> /boot/loader/entries/arch.conf
 ```
 
-## Setup aur with yay
+## Installing the yay AUR helper
+Execute the following commands to change user to **myusername**, clone the yay source, install it, remove the cloned folder (no longer  needed) and then exiting back to the root user.
 ```
 su myusername
 git clone https://aur.archlinux.org/yay.git
@@ -241,9 +242,6 @@ makepkg -si
 cd ..
 rm -rf yay
 exit
-```
-```
-pacman -Sy
 ```
 
 ## Setting up networkmanager
@@ -266,7 +264,7 @@ File managers: dolphin
 pacman -S sddm plasma-meta dolphin dolphin-plugins firefox chromium termite
 ```
 
-Enable sddm on boot
+Enable sddm on boot.
 ```
 systemctl enable sddm
 ```
