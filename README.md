@@ -174,7 +174,7 @@ echo myhostname > /etc/hostname
 ```
 
 ## Weekly disk trim
-To enable weekly disk trim execute the following command.
+To enable weekly disk trim, execute the following command.
 ```
 sudo systemctl enable fstrim.timer
 ```
