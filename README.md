@@ -127,7 +127,7 @@ swapon /swapfile
 ```
 To modify the swapfile after creation, please refer to the following [arch wiki](https://wiki.archlinux.org/index.php/Swap#Swap_file).
 
-Since there currently is no entry for the swap file in fstab, edit it with **vim /etc/fstab**. Add an entry that looks as following.
+Since there currently is no entry for the swap file in **/etc/fstab**, edit it with **vim /etc/fstab**. Add an entry that looks as following.
 ```
 /swapfile none swap defaults 0 0
 ```
@@ -150,7 +150,7 @@ Generate the locale(s).
 locale-gen
 ```
 
-Set the locale by typing **LANG=en_US.UTF-8** where **en_us.UTF-8** is the chosen locale into **/etc/locale.conf**.
+Set the locale by typing **LANG=en_US.UTF-8** where **en_US.UTF-8** is the chosen locale into **/etc/locale.conf**.
 ```
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 ```
