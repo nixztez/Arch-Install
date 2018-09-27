@@ -88,6 +88,8 @@ mount /dev/xxx1 /mnt/boot
 ## Setup mirrorlist
 Please take the time to rank the mirrors as these will be copied onto the live system by pacstrap. 
 ```
+pacman -Sy
+pacman -S pacman-contrib
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.bak
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
