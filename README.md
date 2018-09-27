@@ -203,7 +203,7 @@ passwd myusername
 The **-m** option is short for **--create-home** and is very self explanatory. The **-G** is short for **--groups** and is a list of supplementary groups of the new user. **-G** is not the same as **-g** which only specifies the primary group of the user that will be given to files created by the user. The default value of **-g** is the same as the username.
 
 ## Setting up sudoers
-Never edit the sudoers file by opening it with a regular text editor like **vim /etc/sudoers**. The problem with this is that it never checks the syntax of the file before writing it, and that can result in being locked out of sudo. Instead, always use the visudo program as that will not allow a faulty configuration to be saved. Open the visudo file with **EDITOR=vim visudo** and uncomment the following line. Write and exit.
+Never edit the sudoers file by opening it with a regular text editor like **vim /etc/sudoers**. The problem with that is that it will not check the syntax of the file before writing it, and that can result in being locked out of sudo. Instead, use the visudo program as that will not allow a faulty configuration to be saved. Open the visudo file with **EDITOR=vim visudo** and uncomment the following line. Write and exit.
 ```
 %wheel ALL=(ALL) ALL
 ```
